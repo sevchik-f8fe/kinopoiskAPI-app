@@ -25,18 +25,17 @@ const App = () => {
       .then(json => setData(json.docs))
       .catch(err => console.log(err));
 
-  }, []);
+  }, [url]);
 
   const changeQueryHandler = (e) => {
+    console.log('test1');
     setQuery(e.target.value);
   }
 
   const searchUrl = (e) => {
+    console.log('test2');
+    e.preventDefault();
     setUrl(`https://api.kinopoisk.dev/v1.4/movie/search?page=1&limit=30&query=${query}`);
-  }
-
-  const defaultURL = () => {
-    setUrl('https://api.kinopoisk.dev/v1.4/movie?page=1&limit=30&selectFields=id&selectFields=name&selectFields=description&selectFields=type&selectFields=year&selectFields=rating&selectFields=ageRating&selectFields=votes&selectFields=genres&selectFields=movieLength&selectFields=isSeries&selectFields=totalSeriesLength&selectFields=countries&selectFields=poster&selectFields=videos&selectFields=persons&selectFields=top10&selectFields=top250&selectFields=audience&notNullFields=id&notNullFields=name&notNullFields=type&notNullFields=year&notNullFields=rating.imdb&notNullFields=votes.imdb&notNullFields=ageRating&notNullFields=persons.name&notNullFields=genres.name&notNullFields=countries.name&notNullFields=poster.url&notNullFields=watchability.items.name&notNullFields=audience.count&sortField=rating.imdb&sortField=votes.imdb&sortType=-1&sortType=-1');
   }
 
   const popularMoviesURL = () => {
@@ -44,11 +43,11 @@ const App = () => {
   }
 
   const popularAnimationsURL = () => {
-    setUrl('https://api.kinopoisk.dev/v1.4/movie?page=1&limit=30&selectFields=id&selectFields=name&selectFields=description&selectFields=type&selectFields=year&selectFields=rating&selectFields=ageRating&selectFields=votes&selectFields=genres&selectFields=movieLength&selectFields=isSeries&selectFields=totalSeriesLength&selectFields=countries&selectFields=poster&selectFields=videos&selectFields=persons&selectFields=top10&selectFields=top250&notNullFields=id&notNullFields=name&notNullFields=type&notNullFields=year&notNullFields=rating.imdb&notNullFields=votes.imdb&notNullFields=ageRating&notNullFields=persons.name&notNullFields=genres.name&notNullFields=countries.name&notNullFields=poster.url&sortField=votes.imdb&sortType=-1&type=tv-series')
+    setUrl('https://api.kinopoisk.dev/v1.4/movie?page=1&limit=30&selectFields=id&selectFields=name&selectFields=description&selectFields=type&selectFields=year&selectFields=rating&selectFields=ageRating&selectFields=votes&selectFields=genres&selectFields=movieLength&selectFields=isSeries&selectFields=totalSeriesLength&selectFields=countries&selectFields=poster&selectFields=videos&selectFields=persons&selectFields=top10&selectFields=top250&notNullFields=id&notNullFields=name&notNullFields=type&notNullFields=year&notNullFields=rating.imdb&notNullFields=votes.imdb&notNullFields=ageRating&notNullFields=persons.name&notNullFields=genres.name&notNullFields=countries.name&notNullFields=poster.url&sortField=votes.imdb&sortType=-1&&type=cartoon&type=animated-series&type=anime')
   }
 
   const popularSeriesURL = () => {
-    setUrl('https://api.kinopoisk.dev/v1.4/movie?page=1&limit=30&selectFields=id&selectFields=name&selectFields=description&selectFields=type&selectFields=year&selectFields=rating&selectFields=ageRating&selectFields=votes&selectFields=genres&selectFields=movieLength&selectFields=isSeries&selectFields=totalSeriesLength&selectFields=countries&selectFields=poster&selectFields=videos&selectFields=persons&selectFields=top10&selectFields=top250&notNullFields=id&notNullFields=name&notNullFields=type&notNullFields=year&notNullFields=rating.imdb&notNullFields=votes.imdb&notNullFields=ageRating&notNullFields=persons.name&notNullFields=genres.name&notNullFields=countries.name&notNullFields=poster.url&sortField=votes.imdb&sortType=-1&type=cartoon&type=animated-series&type=anime')
+    setUrl('https://api.kinopoisk.dev/v1.4/movie?page=1&limit=30&selectFields=id&selectFields=name&selectFields=description&selectFields=type&selectFields=year&selectFields=rating&selectFields=ageRating&selectFields=votes&selectFields=genres&selectFields=movieLength&selectFields=isSeries&selectFields=totalSeriesLength&selectFields=countries&selectFields=poster&selectFields=videos&selectFields=persons&selectFields=top10&selectFields=top250&notNullFields=id&notNullFields=name&notNullFields=type&notNullFields=year&notNullFields=rating.imdb&notNullFields=votes.imdb&notNullFields=ageRating&notNullFields=persons.name&notNullFields=genres.name&notNullFields=countries.name&notNullFields=poster.url&sortField=votes.imdb&sortType=-1&type=tv-series')
   }
 
   const topMoviesURL = () => {
@@ -56,7 +55,7 @@ const App = () => {
   }
 
   const topSeriesURL = () => {
-    setUrl('https://api.kinopoisk.dev/v1.4/movie?page=1&limit=30&selectFields=id&selectFields=name&selectFields=description&selectFields=type&selectFields=year&selectFields=rating&selectFields=ageRating&selectFields=votes&selectFields=genres&selectFields=movieLength&selectFields=isSeries&selectFields=totalSeriesLength&selectFields=countries&selectFields=poster&selectFields=videos&selectFields=persons&selectFields=top10&selectFields=top250&notNullFields=id&notNullFields=name&notNullFields=type&notNullFields=year&notNullFields=rating.imdb&notNullFields=votes.imdb&notNullFields=ageRating&notNullFields=persons.name&notNullFields=genres.name&notNullFields=countries.name&notNullFields=poster.url&notNullFields=watchability.items.name&notNullFields=audience.count&sortField=rating.imdb&sortField=votes.imdb&sortType=-1&sortType=-1&type=&isSeries=true');
+    setUrl('https://api.kinopoisk.dev/v1.4/movie?page=1&limit=30&selectFields=id&selectFields=name&selectFields=description&selectFields=type&selectFields=year&selectFields=rating&selectFields=ageRating&selectFields=votes&selectFields=genres&selectFields=movieLength&selectFields=isSeries&selectFields=totalSeriesLength&selectFields=countries&selectFields=poster&selectFields=videos&selectFields=persons&selectFields=top10&selectFields=top250&notNullFields=id&notNullFields=name&notNullFields=type&notNullFields=year&notNullFields=rating.imdb&notNullFields=votes.imdb&notNullFields=ageRating&notNullFields=persons.name&notNullFields=genres.name&notNullFields=countries.name&notNullFields=poster.url&notNullFields=watchability.items.name&notNullFields=audience.count&sortField=rating.imdb&sortField=votes.imdb&sortType=-1&sortType=-1&type=tv-series');
   }
 
   const topAnimationsURL = () => {
@@ -80,15 +79,17 @@ const App = () => {
 
 
   const functionsURL = {
-    newAnimationsURL: () => newAnimationsURL,
-    newSeriesURL: () => newSeriesURL,
-    newMoviesURL: () => newMoviesURL,
-    topAnimationsURL: () => topAnimationsURL,
-    topSeriesURL: () => topSeriesURL,
-    topMoviesURL: () => topMoviesURL,
-    popularSeriesURL: () => popularSeriesURL,
-    popularAnimationsURL: () => popularAnimationsURL,
-    popularMoviesURL: () => popularMoviesURL
+    newAnimationsURL,
+    newSeriesURL,
+    newMoviesURL,
+    topAnimationsURL,
+    topSeriesURL,
+    topMoviesURL,
+    popularSeriesURL,
+    popularAnimationsURL,
+    popularMoviesURL,
+    changeQueryHandler,
+    searchUrl
   }
 
   return (

@@ -1,8 +1,8 @@
 const ErrorPage = () => {
     return (
         <div>
-            <h1>Oops!</h1>
-            <p>Sorry, an unexpected error has occurred.</p>
+            <h1>Ой!</h1>
+            <p>Извините, но похоже, что такой страницы не существует.</p>
         </div>
     );
 }

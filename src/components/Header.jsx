@@ -16,9 +16,19 @@ const Header = ({ functionsURL }) => {
 
                         <label htmlFor="search" className="sr-only">Поиск</label>
                         <div className="relative w-full">
-                            <input type="text" id="search" className="block w-full p-2 text-md border outline-0 border-gray-200 focus:border-gray-300 text-gray-900 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" placeholder="Hayao Miyazaki" />
+                            <input
+                                onChange={(e) => functionsURL.changeQueryHandler(e)}
+                                type="text"
+                                id="search"
+                                className="block w-full p-2 text-md border outline-0 border-gray-200 focus:border-gray-300 text-gray-900 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+                                placeholder="Hayao Miyazaki"
+                            />
                         </div>
-                        <button type="submit" className="transition-all duration-100 inline-flex items-center py-2.5 px-3 ms-2 text-sm font-medium text-white rounded-md bg-orange-500 focus:bg-orange-400 hover:bg-orange-600">
+                        <button
+                            onClick={(e) => functionsURL.searchURL(e)}
+                            type="submit"
+                            className="transition-all duration-100 inline-flex items-center py-2.5 px-3 ms-2 text-sm font-medium text-white rounded-md bg-orange-500 focus:bg-orange-400 hover:bg-orange-600"
+                        >
                             <svg className="w-4 h-4 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                                 <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                             </svg>Поиск

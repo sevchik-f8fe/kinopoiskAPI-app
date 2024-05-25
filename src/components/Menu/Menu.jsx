@@ -1,6 +1,7 @@
 import { useState } from "react";
 import effacer from "./effacer.svg";
 import menu from "./menu.svg";
+import { Link } from "react-router-dom";
 
 const Menu = ({ functionsURL }) => {
     const [menuActive, setMenuActive] = useState(false);
@@ -44,7 +45,9 @@ const Menu = ({ functionsURL }) => {
                                 }}
                                 className="mb-2 font-medium text-lg hover:text-orange-600 max-w-fit cursor-pointer transition-all"
                             >
-                                Популярные
+                                <Link to='/'>
+                                    Популярные
+                                </Link>
                             </li>
 
                             <li
@@ -54,7 +57,9 @@ const Menu = ({ functionsURL }) => {
                                     setMenuActive(!menuActive)
                                 }}
                             >
-                                Топ 250
+                                <Link to='/'>
+                                    Топ 250
+                                </Link>
                             </li>
 
                             <li
@@ -64,7 +69,9 @@ const Menu = ({ functionsURL }) => {
                                     setMenuActive(!menuActive)
                                 }}
                             >
-                                Топ новинок
+                                <Link to='/'>
+                                    Топ новинок
+                                </Link>
                             </li>
                         </ul>
                     </div>
@@ -79,7 +86,9 @@ const Menu = ({ functionsURL }) => {
                                 }}
                                 className="mb-2 font-medium text-lg hover:text-orange-600 max-w-fit cursor-pointer transition-all"
                             >
-                                Популярные
+                                <Link to='/'>
+                                    Популярные
+                                </Link>
                             </li>
 
                             <li
@@ -89,7 +98,9 @@ const Menu = ({ functionsURL }) => {
                                     setMenuActive(!menuActive)
                                 }}
                             >
-                                Топ 250
+                                <Link to='/'>
+                                    Топ 250
+                                </Link>
                             </li>
 
                             <li
@@ -99,7 +110,9 @@ const Menu = ({ functionsURL }) => {
                                     setMenuActive(!menuActive)
                                 }}
                             >
-                                Топ новинок
+                                <Link to='/'>
+                                    Топ новинок
+                                </Link>
                             </li>
                         </ul>
                     </div>
@@ -114,7 +127,9 @@ const Menu = ({ functionsURL }) => {
                                 }}
                                 className="mb-2 font-medium text-lg hover:text-orange-600 max-w-fit cursor-pointer transition-all"
                             >
-                                Популярные
+                                <Link to='/'>
+                                    Популярные
+                                </Link>
                             </li>
 
                             <li
@@ -124,7 +139,9 @@ const Menu = ({ functionsURL }) => {
                                     setMenuActive(!menuActive)
                                 }}
                             >
-                                Топ 250
+                                <Link to='/'>
+                                    Топ 250
+                                </Link>
                             </li>
 
                             <li
@@ -134,7 +151,9 @@ const Menu = ({ functionsURL }) => {
                                     setMenuActive(!menuActive)
                                 }}
                             >
-                                Топ новинок
+                                <Link to='/'>
+                                    Топ новинок
+                                </Link>
                             </li>
                         </ul>
                     </div>

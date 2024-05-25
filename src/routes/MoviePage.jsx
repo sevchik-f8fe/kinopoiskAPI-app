@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
 import { useParams, BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { TYPES } from "../data/data";
+import ShowReviews from "../components/ShowReviews/ShowReviews";
 
 const MoviePage = ({ data }) => {
     const { movieId } = useParams();
@@ -31,7 +31,7 @@ const MoviePage = ({ data }) => {
             <div className="p-4 mt-16 flex justify-start gap-6 w-4/5 mx-auto relative">
                 <div className="w-1/3 flex flex-col items-center gap-16">
                     <img src={movie.poster.url} alt="poster" />
-                    {movie.videos ? (<iframe src={movie.videos.trailers[0].url} className="mb-8" width="100%" height="220px"></iframe>) : (<div></div>)}
+                    {movie?.videos?.trailers[0] ? (<iframe src={movie.videos.trailers[0].url} className="mb-8" width="100%" height="220px"></iframe>) : (<div></div>)}
                 </div>
 
                 <div className="w-2/3">
@@ -169,6 +169,8 @@ const MoviePage = ({ data }) => {
                             </tr>
                         </tbody>
                     </table>
+
+                    <ShowReviews movieId={movie.id} />
                 </div>
             </div>
         </>
