@@ -1,7 +1,17 @@
 import { Link } from "react-router-dom";
+import { useRef } from "react";
 import Menu from "./Menu/Menu";
 
 const Header = ({ functionsURL }) => {
+    const inputRef = useRef(null);
+
+    window.onkeydown = (e) => {
+        if (e.key === 'Enter' && inputRef.current.value.length > 0) {
+            e.preventDefault();
+            functionsURL.searchURL();
+        }
+    }
+
     return (
         <header className="mb-4">
             <nav className="bg-white border-b-2 border-gray-200 px-6 py-2.5 dark:bg-gray-800">
@@ -17,22 +27,26 @@ const Header = ({ functionsURL }) => {
                         <label htmlFor="search" className="sr-only">Поиск</label>
                         <div className="relative w-full">
                             <input
+                                ref={inputRef}
                                 onChange={(e) => functionsURL.changeQueryHandler(e)}
                                 type="text"
                                 id="search"
                                 className="block w-full p-2 text-md border outline-0 border-gray-200 focus:border-gray-300 text-gray-900 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
-                                placeholder="Hayao Miyazaki"
+                                placeholder="Дюна, Достать ножи,..."
                             />
                         </div>
-                        <button
-                            onClick={(e) => functionsURL.searchURL(e)}
-                            type="submit"
-                            className="transition-all duration-100 inline-flex items-center py-2.5 px-3 ms-2 text-sm font-medium text-white rounded-md bg-orange-500 focus:bg-orange-400 hover:bg-orange-600"
-                        >
-                            <svg className="w-4 h-4 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
-                            </svg>Поиск
-                        </button>
+                        <Link to="/">
+                            <button
+                                onClick={() => functionsURL.searchURL()}
+                                type="button"
+                                className="transition-all duration-100 inline-flex items-center py-2.5 px-3 ms-2 text-sm font-medium text-white rounded-md bg-orange-500 focus:bg-orange-400 hover:bg-orange-600"
+                            >
+                                <svg className="w-4 h-4 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                                </svg>Поиск
+                            </button>
+
+                        </Link>
                     </form>
 
                     <div className="justify-between items-center flex w-auto order-2">
@@ -43,10 +57,10 @@ const Header = ({ functionsURL }) => {
                                 </Link>
                             </li>
                             <li>
-                                <a href="#" className="block text-sm font-medium px-1 py-2 text-gray-500 hover:text-orange-600 hover:border-orange-300 transition-all border-b border-gray-300 dark:text-gray-400">GitHub</a>
+                                <a target="_blank" href="https://github.com/sevchik-f8fe" className="block text-sm font-medium px-1 py-2 text-gray-500 hover:text-orange-600 hover:border-orange-300 transition-all border-b border-gray-300 dark:text-gray-400">GitHub</a>
                             </li>
                             <li>
-                                <a href="#" className="block text-sm font-medium px-1 py-2 text-gray-500 hover:text-orange-600 hover:border-orange-300 transition-all border-b border-gray-300 dark:text-gray-400">Связь</a>
+                                <a target="_blank" href="https://t.me/poooooooooooooooaa" className="block text-sm font-medium px-1 py-2 text-gray-500 hover:text-orange-600 hover:border-orange-300 transition-all border-b border-gray-300 dark:text-gray-400">Связь</a>
                             </li>
                         </ul>
                     </div>

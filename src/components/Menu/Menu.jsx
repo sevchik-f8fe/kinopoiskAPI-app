@@ -6,11 +6,6 @@ import { Link } from "react-router-dom";
 const Menu = ({ functionsURL }) => {
     const [menuActive, setMenuActive] = useState(false);
 
-    const a = () => {
-        setMenuActive(!menuActive)
-        console.log(menuActive);
-    }
-
     const menuClass = menuActive ? "h-screen overflow-hidden transition-all duration-500 z-40 top-0 left-0 w-full fixed bg-zinc-900" : "overflow-hidden transition-all duration-500 z-40 top-0 left-0 w-full fixed bg-zinc-900 h-0";
 
     return (
@@ -161,9 +156,21 @@ const Menu = ({ functionsURL }) => {
                     <div>
                         <h1 className="text-3xl font-bold text-zinc-600 mb-4">Репо/Связь</h1>
                         <ul className="ml-4">
-                            <li className="mb-2 font-medium text-lg hover:text-zinc-400 max-w-fit cursor-pointer transition-all">GitHub</li>
-                            <li className="mb-2 font-medium text-lg hover:text-sky-500 max-w-fit cursor-pointer transition-all">Мой тг</li>
-                            <li className="mb-2 font-medium text-lg text-zinc-500 hover:text-zinc-50 max-w-fit cursor-pointer transition-all">Ну или почта хз</li>
+                            <li className="mb-2 font-medium text-lg hover:text-zinc-400 max-w-fit cursor-pointer transition-all">
+                                <a target="_blank" href="https://github.com/sevchik-f8fe/kinopoiskAPI-app">
+                                    GitHub
+                                </a>
+                            </li>
+                            <li className="mb-2 font-medium text-lg hover:text-sky-500 max-w-fit cursor-pointer transition-all">
+                                <a target="_blank" href="https://t.me/poooooooooooooooaa">
+                                    Мой тг
+                                </a>
+                            </li>
+                            <li className="mb-2 font-medium text-lg text-zinc-500 hover:text-zinc-50 max-w-fit cursor-pointer transition-all">
+                                <a href="mailto: kononovseva0627@gmail.com">
+                                    Ну или почта хз
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>

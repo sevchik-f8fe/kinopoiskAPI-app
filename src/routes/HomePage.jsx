@@ -53,12 +53,16 @@ const ShowingItem = ({ showItem }) => {
                         Показать полностью
                     </Link>
 
-                    <a
-                        href="#"
-                        className="block max-w-fit mt-6 font-medium text-md text-white transition-all hover:bg-zinc-500 bg-zinc-400 py-1 px-2 rounded-md shadow-lg"
-                    >
-                        Открыть Кинопоиск
-                    </a>
+                    {showItem?.externalId?.kpHD && (
+                        <a
+                            target="_blank"
+                            href={`https://hd.kinopoisk.ru/film/${showItem?.externalId?.kpHD}`}
+                            className="block max-w-fit mt-6 font-medium text-md text-white transition-all hover:bg-zinc-500 bg-zinc-400 py-1 px-2 rounded-md shadow-lg"
+                        >
+                            Открыть Кинопоиск
+                        </a>
+                    )}
+
                 </div>
 
                 <div className="relative w-2/5 px-2 py-1">

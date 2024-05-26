@@ -7,11 +7,17 @@ const MoviePage = ({ data }) => {
     const movie = data.find((elem) => elem.id == movieId);
 
     const filteredByProfession = (prof) => {
-        return movie.persons
-            .filter((person) => {
-                return person.enProfession === prof;
-            })
-            .map((person) => person.name || person.enName).join(', ');
+        if (movie.persons) {
+            return movie?.persons
+                .filter((person) => {
+                    return person?.enProfession === prof;
+                })
+                .map((person) => person?.name || person?.enName).join(', ');
+        }
+        else {
+            return [];
+        }
+
     }
 
     const findByProp = (list, prop) => {
@@ -47,7 +53,16 @@ const MoviePage = ({ data }) => {
 
                     <p className="font-medium mt-2 text-gray-700">{movie.description}</p>
 
-                    <a className="inline-block m-6 bg-orange-600 hover:bg-orange-500 transition-all font-bold text-white px-4 py-2 rounded-2xl" href="#">Смотреть на Кинопоиск</a>
+                    {movie?.externalId?.kpHD && (
+                        <a
+                            target="_blank"
+                            className="inline-block m-6 bg-orange-600 hover:bg-orange-500 transition-all font-bold text-white px-4 py-2 rounded-2xl"
+                            href={`https://hd.kinopoisk.ru/film/${movie?.externalId?.kpHD}`}
+                        >
+                            Смотреть на Кинопоиск
+                        </a>
+                    )}
+
 
                     <table className="table-fixed mt-4 text-left">
                         <thead>
@@ -77,96 +92,100 @@ const MoviePage = ({ data }) => {
                                     {movie?.genres.map((genre) => genre.name).join(', ')}
                                 </td>
                             </tr>
-                            <tr>
-                                <td className="pb-2">Актёр</td>
-                                {(filteredByProfession('actor').length > 0) ? (
-                                    <td>
-                                        {filteredByProfession('actor')}
-                                    </td>
-                                ) : (
-                                    <td>-</td>
-                                )}
-                            </tr>
-                            <tr>
-                                <td className="pb-2">Режиссер</td>
-                                {(filteredByProfession('director').length > 0) ? (
-                                    <td>
-                                        {filteredByProfession('director')}
-                                    </td>
-                                ) : (
-                                    <td>{'-'}</td>
-                                )}
-                            </tr>
-                            <tr>
-                                <td className="pb-2">Продюсер</td>
-                                {(filteredByProfession('producer').length > 0) ? (
-                                    <td>
-                                        {filteredByProfession('producer')}
-                                    </td>
-                                ) : (
-                                    <td>{'-'}</td>
-                                )}
-                            </tr>
-                            <tr>
-                                <td className="pb-2">Композитор</td>
-                                {(filteredByProfession('composer').length > 0) ? (
-                                    <td>
-                                        {filteredByProfession('composer')}
-                                    </td>
-                                ) : (
-                                    <td>{'-'}</td>
-                                )}
-                            </tr>
-                            <tr>
-                                <td className="pb-2">Оператор</td>
-                                {(filteredByProfession('operator').length > 0) ? (
-                                    <td>
-                                        {filteredByProfession('operator')}
-                                    </td>
-                                ) : (
-                                    <td>{'-'}</td>
-                                )}
-                            </tr>
-                            <tr>
-                                <td className="pb-2">Монтажёр</td>
-                                {(filteredByProfession('editor').length > 0) ? (
-                                    <td>
-                                        {filteredByProfession('editor')}
-                                    </td>
-                                ) : (
-                                    <td>{'-'}</td>
-                                )}
-                            </tr>
-                            <tr>
-                                <td className="pb-2">Художники</td>
-                                {(filteredByProfession('designer').length > 0) ? (
-                                    <td>
-                                        {filteredByProfession('designer')}
-                                    </td>
-                                ) : (
-                                    <td>{'-'}</td>
-                                )}
-                            </tr>
-                            <tr>
-                                <td className="pb-2">Актёры дубляжа</td>
-                                {(filteredByProfession('voice_actor').length > 0) ? (
-                                    <td>
-                                        {filteredByProfession('voice_actor')}
-                                    </td>
-                                ) : (
-                                    <td>{'-'}</td>
-                                )}
-                            </tr>
-                            <tr>
-                                <td className="pb-2">Редакторы</td>
-                                {(filteredByProfession('writer').length > 0) ? (
-                                    <td>
-                                        {filteredByProfession('writer')}
-                                    </td>
-                                ) : (
-                                    <td>{'-'}</td>
-                                )}
-                            </tr>
+                            {movie?.persons && (
+                                <>
+                                    <tr>
+                                        <td className="pb-2">Актёр</td>
+                                        {(filteredByProfession('actor').length > 0 && movie.persons[0]) ? (
+                                            <td>
+                                                {filteredByProfession('actor')}
+                                            </td>
+                                        ) : (
+                                            <td>-</td>
+                                        )}
+                                    </tr>
+                                    <tr>
+                                        <td className="pb-2">Режиссер</td>
+                                        {(filteredByProfession('director').length > 0 && movie.persons) ? (
+                                            <td>
+                                                {filteredByProfession('director')}
+                                            </td>
+                                        ) : (
+                                            <td>{'-'}</td>
+                                        )}
+                                    </tr>
+                                    <tr>
+                                        <td className="pb-2">Продюсер</td>
+                                        {(filteredByProfession('producer').length > 0 && movie.persons) ? (
+                                            <td>
+                                                {filteredByProfession('producer')}
+                                            </td>
+                                        ) : (
+                                            <td>{'-'}</td>
+                                        )}
+                                    </tr>
+                                    <tr>
+                                        <td className="pb-2">Композитор</td>
+                                        {(filteredByProfession('composer').length > 0 && movie.persons) ? (
+                                            <td>
+                                                {filteredByProfession('composer')}
+                                            </td>
+                                        ) : (
+                                            <td>{'-'}</td>
+                                        )}
+                                    </tr>
+                                    <tr>
+                                        <td className="pb-2">Оператор</td>
+                                        {(filteredByProfession('operator').length > 0 && movie.persons) ? (
+                                            <td>
+                                                {filteredByProfession('operator')}
+                                            </td>
+                                        ) : (
+                                            <td>{'-'}</td>
+                                        )}
+                                    </tr>
+                                    <tr>
+                                        <td className="pb-2">Монтажёр</td>
+                                        {(filteredByProfession('editor').length > 0 && movie.persons) ? (
+                                            <td>
+                                                {filteredByProfession('editor')}
+                                            </td>
+                                        ) : (
+                                            <td>{'-'}</td>
+                                        )}
+                                    </tr>
+                                    <tr>
+                                        <td className="pb-2">Художники</td>
+                                        {(filteredByProfession('designer').length > 0 && movie.persons) ? (
+                                            <td>
+                                                {filteredByProfession('designer')}
+                                            </td>
+                                        ) : (
+                                            <td>{'-'}</td>
+                                        )}
+                                    </tr>
+                                    <tr>
+                                        <td className="pb-2">Актёры дубляжа</td>
+                                        {(filteredByProfession('voice_actor').length > 0 && movie.persons) ? (
+                                            <td>
+                                                {filteredByProfession('voice_actor')}
+                                            </td>
+                                        ) : (
+                                            <td>{'-'}</td>
+                                        )}
+                                    </tr>
+                                    <tr>
+                                        <td className="pb-2">Редакторы</td>
+                                        {(filteredByProfession('writer').length > 0 && movie.persons) ? (
+                                            <td>
+                                                {filteredByProfession('writer')}
+                                            </td>
+                                        ) : (
+                                            <td>{'-'}</td>
+                                        )}
+                                    </tr>
+                                </>
+                            )}
                         </tbody>
                     </table>
 
