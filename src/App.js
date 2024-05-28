@@ -7,12 +7,14 @@ import HomePage from "./routes/HomePage";
 import MoviePage from "./routes/MoviePage";
 import ErrorPage from "./routes/ErrorPage";
 import ScrollToTop from './utils/ScrollToTop';
-import DraftsPage from './routes/DraftsPage';
-//https://hd.kinopoisk.ru/film/4ec55029a34efb1b9122f950a3fef380
+import DraftsPage from './routes/DraftsPage/DraftsPage';
+
+import './index.css'
+
 const App = () => {
   const [query, setQuery] = useState("");
   const [data, setData] = useState([]);
-  const [url, setUrl] = useState('https://api.kinopoisk.dev/v1.4/movie?page=1&limit=30&selectFields=id&selectFields=externalId&selectFields=name&selectFields=description&selectFields=type&selectFields=year&selectFields=rating&selectFields=ageRating&selectFields=votes&selectFields=genres&selectFields=movieLength&selectFields=isSeries&selectFields=totalSeriesLength&selectFields=countries&selectFields=poster&selectFields=videos&selectFields=persons&selectFields=top10&selectFields=top250&selectFields=audience&notNullFields=id&notNullFields=name&notNullFields=type&notNullFields=year&notNullFields=externalId.kpHD&notNullFields=rating.imdb&notNullFields=votes.imdb&notNullFields=ageRating&notNullFields=persons.name&notNullFields=genres.name&notNullFields=countries.name&notNullFields=poster.url&notNullFields=watchability.items.name&notNullFields=audience.count&sortField=rating.imdb&sortField=votes.imdb&sortType=-1&sortType=-1');
+  const [url, setUrl] = useState('https://api.kinopoisk.dev/v1.4/movie?page=1&limit=15&selectFields=id&selectFields=externalId&selectFields=name&selectFields=description&selectFields=type&selectFields=year&selectFields=rating&selectFields=ageRating&selectFields=votes&selectFields=genres&selectFields=movieLength&selectFields=isSeries&selectFields=totalSeriesLength&selectFields=countries&selectFields=poster&selectFields=videos&selectFields=persons&selectFields=top10&selectFields=top250&selectFields=audience&notNullFields=id&notNullFields=name&notNullFields=type&notNullFields=year&notNullFields=externalId.kpHD&notNullFields=rating.imdb&notNullFields=votes.imdb&notNullFields=ageRating&notNullFields=persons.name&notNullFields=genres.name&notNullFields=countries.name&notNullFields=poster.url&notNullFields=watchability.items.name&notNullFields=audience.count&sortField=rating.imdb&sortField=votes.imdb&sortType=-1&sortType=-1');
 
   const options = {
     method: 'GET',
@@ -31,7 +33,7 @@ const App = () => {
     setQuery(e.target.value);
   }
 
-  const searchURL = (e) => {
+  const searchURL = () => {
     setUrl(`https://api.kinopoisk.dev/v1.4/movie/search?page=1&limit=30&query=${query}`);
   }
 

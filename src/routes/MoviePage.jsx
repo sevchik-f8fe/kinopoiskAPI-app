@@ -26,14 +26,14 @@ const MoviePage = ({ data }) => {
     }
 
     return (!movie?.name) ? (
-        <>
+        <div className="dark:bg-zinc-800">
             <div className="w-full flex h-screen flex-col items-center justify-start">
-                <svg className="animate-spin mt-24 h-20 w-20 z-50 border-b-4 rounded-full border-gray-500" viewBox="0 0 24 24" />
-                <h1 className="font-semibold mt-8 text-4xl text-gray-500">Загрузка данных...</h1>
+                <svg className="animate-spin mt-24 h-20 w-20 z-50 border-b-4 rounded-full border-zinc-400" viewBox="0 0 24 24" />
+                <h1 className="font-semibold mt-8 text-4xl text-zinc-500">Загрузка данных...</h1>
             </div>
-        </>
+        </div>
     ) : (
-        <>
+        <div className="dark:bg-zinc-800">
             <div className="p-4 mt-16 flex justify-start gap-6 w-4/5 mx-auto relative">
                 <div className="w-1/3 flex flex-col items-center gap-16">
                     <img src={movie.poster.url} alt="poster" />
@@ -41,17 +41,17 @@ const MoviePage = ({ data }) => {
                 </div>
 
                 <div className="w-2/3">
-                    <h1 className="text-5xl font-bold mb-4 text-slate-800">{movie.name} ({movie.year})</h1>
+                    <h1 className="text-5xl font-bold mb-4 text-zinc-800 dark:text-white">{movie.name} ({movie.year})</h1>
 
-                    {movie.rating.imdb && (<span className="font-bold text-lg bg-green-200 p-0.5 mr-2 rounded">{movie.rating.imdb} imdb</span>)}
+                    {movie.rating.imdb && (<span className="font-bold text-lg bg-green-200 dark:bg-green-700 dark:text-white p-1 mr-2 rounded">{movie.rating.imdb} imdb</span>)}
 
-                    {(movie.ageRating !== null) && (<span className="font-bold text-lg bg-pink-200 p-0.5 mr-2 rounded">{movie.ageRating}+</span>)}
+                    {(movie.ageRating !== null) && (<span className="font-bold text-lg dark:bg-red-700 dark:text-whitedark:bg-emerald-600 dark:text-white bg-red-200 p-1 mr-2 rounded">{movie.ageRating}+</span>)}
 
-                    {movie.top10 && (<span className="font-bold text-lg text-amber-500 border-2 border-amber-500 p-0.5 mr-2 rounded">TOP10</span>)}
+                    {movie.top10 && (<span className="font-bold text-lg text-yellow-500 border-2 border-yellow-500 p-1 mr-2 rounded">TOP10</span>)}
 
-                    {movie.top250 && (<span className="font-bold text-lg text-zinc-500 border-2 border-zinc-500 p-0.5 mr-2 rounded">TOP250</span>)}
+                    {movie.top250 && (<span className="font-bold text-lg text-zinc-500 border-2 border-zinc-500 p-1 mr-2 rounded">TOP250</span>)}
 
-                    <p className="font-medium mt-2 text-gray-700">{movie.description}</p>
+                    <p className="font-medium mt-2 text-zinc-700 dark:text-zinc-200">{movie.description}</p>
 
                     {movie?.externalId?.kpHD && (
                         <a
@@ -63,125 +63,124 @@ const MoviePage = ({ data }) => {
                         </a>
                     )}
 
-
                     <table className="table-fixed mt-4 text-left">
                         <thead>
-                            <tr>
-                                <th className="text-2xl pb-4 w-2/5">О франшизе</th>
+                            <tr className="dark:border-b-zinc-600">
+                                <th className="text-2xl dark:text-zinc-100 pb-4 w-2/5">О франшизе</th>
                                 <th className="w-3/5"></th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td className="pb-2">Год производства</td>
-                                <td>{movie.year}</td>
+                            <tr className="dark:border-b-zinc-600">
+                                <td className="pb-2 dark:text-zinc-500">Год производства</td>
+                                <td className="dark:text-zinc-200">{movie.year}</td>
                             </tr>
-                            <tr>
-                                <td className="pb-2">Тип</td>
-                                <td>{findByProp(TYPES, movie.type)}</td>
+                            <tr className="dark:border-b-zinc-600">
+                                <td className="pb-2 dark:text-zinc-500">Тип</td>
+                                <td className="dark:text-zinc-200">{findByProp(TYPES, movie.type)}</td>
                             </tr>
-                            <tr>
-                                <td className="pb-2">Страна производства</td>
-                                <td>
+                            <tr className="dark:border-b-zinc-600">
+                                <td className="pb-2 dark:text-zinc-500">Страна производства</td>
+                                <td className="dark:text-zinc-200">
                                     {movie.countries.map((country) => country.name).join(', ')}
                                 </td>
                             </tr>
-                            <tr>
-                                <td className="pb-2">Жанр</td>
-                                <td>
+                            <tr className="dark:border-b-zinc-600">
+                                <td className="pb-2 dark:text-zinc-500">Жанр</td>
+                                <td className="dark:text-zinc-200">
                                     {movie?.genres.map((genre) => genre.name).join(', ')}
                                 </td>
                             </tr>
                             {movie?.persons && (
                                 <>
-                                    <tr>
-                                        <td className="pb-2">Актёр</td>
+                                    <tr className="dark:border-b-zinc-600">
+                                        <td className="pb-2 dark:text-zinc-500">Актёр</td>
                                         {(filteredByProfession('actor').length > 0 && movie.persons[0]) ? (
-                                            <td>
+                                            <td className="dark:text-zinc-200">
                                                 {filteredByProfession('actor')}
                                             </td>
                                         ) : (
-                                            <td>-</td>
+                                            <td className="dark:text-zinc-200">-</td>
                                         )}
                                     </tr>
-                                    <tr>
-                                        <td className="pb-2">Режиссер</td>
+                                    <tr className="dark:border-b-zinc-600">
+                                        <td className="pb-2 dark:text-zinc-500">Режиссер</td>
                                         {(filteredByProfession('director').length > 0 && movie.persons) ? (
-                                            <td>
+                                            <td className="dark:text-zinc-200">
                                                 {filteredByProfession('director')}
                                             </td>
                                         ) : (
-                                            <td>{'-'}</td>
+                                            <td className="dark:text-zinc-200">{'-'}</td>
                                         )}
                                     </tr>
-                                    <tr>
-                                        <td className="pb-2">Продюсер</td>
+                                    <tr className="dark:border-b-zinc-600">
+                                        <td className="pb-2 dark:text-zinc-500">Продюсер</td>
                                         {(filteredByProfession('producer').length > 0 && movie.persons) ? (
-                                            <td>
+                                            <td className="dark:text-zinc-200">
                                                 {filteredByProfession('producer')}
                                             </td>
                                         ) : (
-                                            <td>{'-'}</td>
+                                            <td className="dark:text-zinc-200">{'-'}</td>
                                         )}
                                     </tr>
-                                    <tr>
-                                        <td className="pb-2">Композитор</td>
+                                    <tr className="dark:border-b-zinc-600">
+                                        <td className="pb-2 dark:text-zinc-500">Композитор</td>
                                         {(filteredByProfession('composer').length > 0 && movie.persons) ? (
-                                            <td>
+                                            <td className="dark:text-zinc-200">
                                                 {filteredByProfession('composer')}
                                             </td>
                                         ) : (
-                                            <td>{'-'}</td>
+                                            <td className="dark:text-zinc-200">{'-'}</td>
                                         )}
                                     </tr>
-                                    <tr>
-                                        <td className="pb-2">Оператор</td>
+                                    <tr className="dark:border-b-zinc-600">
+                                        <td className="pb-2 dark:text-zinc-500">Оператор</td>
                                         {(filteredByProfession('operator').length > 0 && movie.persons) ? (
-                                            <td>
+                                            <td className="dark:text-zinc-200">
                                                 {filteredByProfession('operator')}
                                             </td>
                                         ) : (
-                                            <td>{'-'}</td>
+                                            <td className="dark:text-zinc-200">{'-'}</td>
                                         )}
                                     </tr>
-                                    <tr>
-                                        <td className="pb-2">Монтажёр</td>
+                                    <tr className="dark:border-b-zinc-600">
+                                        <td className="pb-2 dark:text-zinc-500">Монтажёр</td>
                                         {(filteredByProfession('editor').length > 0 && movie.persons) ? (
-                                            <td>
+                                            <td className="dark:text-zinc-200">
                                                 {filteredByProfession('editor')}
                                             </td>
                                         ) : (
-                                            <td>{'-'}</td>
+                                            <td className="dark:text-zinc-200">{'-'}</td>
                                         )}
                                     </tr>
-                                    <tr>
-                                        <td className="pb-2">Художники</td>
+                                    <tr className="dark:border-b-zinc-600">
+                                        <td className="pb-2 dark:text-zinc-500">Художники</td>
                                         {(filteredByProfession('designer').length > 0 && movie.persons) ? (
-                                            <td>
+                                            <td className="dark:text-zinc-200">
                                                 {filteredByProfession('designer')}
                                             </td>
                                         ) : (
-                                            <td>{'-'}</td>
+                                            <td className="dark:text-zinc-200">{'-'}</td>
                                         )}
                                     </tr>
-                                    <tr>
-                                        <td className="pb-2">Актёры дубляжа</td>
+                                    <tr className="dark:border-b-zinc-600">
+                                        <td className="pb-2 dark:text-zinc-500">Актёры дубляжа</td>
                                         {(filteredByProfession('voice_actor').length > 0 && movie.persons) ? (
-                                            <td>
+                                            <td className="dark:text-zinc-200">
                                                 {filteredByProfession('voice_actor')}
                                             </td>
                                         ) : (
-                                            <td>{'-'}</td>
+                                            <td className="dark:text-zinc-200">{'-'}</td>
                                         )}
                                     </tr>
-                                    <tr>
-                                        <td className="pb-2">Редакторы</td>
+                                    <tr className="dark:border-b-zinc-600">
+                                        <td className="pb-2 dark:text-zinc-500">Редакторы</td>
                                         {(filteredByProfession('writer').length > 0 && movie.persons) ? (
-                                            <td>
+                                            <td className="dark:text-zinc-200">
                                                 {filteredByProfession('writer')}
                                             </td>
                                         ) : (
-                                            <td>{'-'}</td>
+                                            <td className="dark:text-zinc-200">{'-'}</td>
                                         )}
                                     </tr>
                                 </>
@@ -192,7 +191,7 @@ const MoviePage = ({ data }) => {
                     <ShowReviews movieId={movie.id} />
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 

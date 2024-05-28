@@ -22,14 +22,14 @@ const ShowReviews = ({ movieId }) => {
     let classNameReviews = isShow ? "h-auto" : "h-0"
 
     return (
-        <div className="my-16 border-t-2 pt-2">
+        <div className="my-16 dark:border-t-zinc-600 border-t-2 pt-2">
             {reviews?.length > 1 && (
                 <>
                     <div className="flex justify-center items-center gap-4">
-                        <p className="font-medium text-lg text-zinc-600">{isShow ? "Скрыть отзывы" : "Показать отзывы"}</p>
+                        <p className="font-medium text-lg text-zinc-600 dark:text-zinc-400">{isShow ? "Скрыть отзывы" : "Показать отзывы"}</p>
                         <img
                             onClick={() => setIsShow(!isShow)}
-                            className="w-8 h-8 cursor-pointer hover:bg-orange-50 hover:scale-105 transition-all p-1 rounded-md active:bg-orange-100 active:scale-95"
+                            className="w-8 h-8 cursor-pointer hover:bg-orange-50 hover:scale-105 dark:bg-zinc-500 transition-all p-1 rounded-md active:bg-orange-100 active:scale-95"
                             src={isShow ? up : down}
                             alt="control-button" />
                     </div>
@@ -47,16 +47,16 @@ const ShowReviews = ({ movieId }) => {
 
 const Review = ({ review }) => {
     return (
-        <li data-index={review.id} className="flex-col border border-b-2 border-zinc-300 border-b-zinc-600 rounded items-start justify-between w-full cursor-pointer my-4 p-2 gap-2 bg-white">
+        <li data-index={review.id} className="flex-col border border-b-2 border-zinc-300 dark:border-zinc-500 dark:bg-zinc-700 border-b-zinc-600 rounded items-start justify-between w-full cursor-pointer my-4 p-2 gap-2 bg-white">
 
             <div className="border-b pb-2 mb-2 flex justify-between items-center">
-                <h2 className="font-medium text-lg text-zinc-50 text-center align-middle px-1 rounded-md bg-zinc-700">{review.author || "unknown"}</h2>
+                <h2 className="font-medium text-lg dark:text-zinc-900 dark:bg-zinc-100 text-zinc-50 text-center align-middle px-1 rounded-md bg-zinc-700">{review.author || "unknown"}</h2>
                 <span className="text-zinc-500 text-sm font-normal">{new Date(review.date).toLocaleDateString()}</span>
             </div>
 
             <div className="flex-grow">
-                <h2 className="font-medium text-zinc-600">{review.title}</h2>
-                <p dangerouslySetInnerHTML={{ __html: review.review }} className="text-zinc-600"></p>
+                <h2 className="font-medium text-zinc-600 mb-1 dark:text-zinc-200">{review.title}</h2>
+                <p dangerouslySetInnerHTML={{ __html: review.review }} className="text-zinc-600 dark:text-zinc-300"></p>
             </div>
         </li>
     );

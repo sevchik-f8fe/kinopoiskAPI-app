@@ -13,7 +13,7 @@ const Menu = ({ functionsURL }) => {
             <div className="z-60 bloc w-16 h-8">
                 <img
                     onClick={() => setMenuActive(!menuActive)}
-                    className="w-16 h-8 text-orange-600 border-2 border-orange-400 cursor-pointer hover:bg-orange-50 active:bg-orange-100 transition-all"
+                    className="w-16 h-8 text-orange-600 border-2 border-orange-400 cursor-pointer dark:hover:bg-zinc-800 dark:active:bg-zinc-700 hover:bg-orange-50 active:bg-orange-100 transition-all"
                     src={menu} alt="menu"
                 />
             </div>
