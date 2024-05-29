@@ -51,7 +51,7 @@ const Header = ({ functionsURL }) => {
                         </div>
                         <Link to="/">
                             <button
-                                onClick={() => functionsURL.searchURL()}
+                                onClick={() => functionsURL.searchURL(true)}
                                 type="button"
                                 className="transition-all duration-100 inline-flex items-center py-2.5 px-3 ms-2 text-sm font-medium text-white rounded-md bg-orange-600 focus:bg-orange-400 hover:bg-orange-500"
                             >
