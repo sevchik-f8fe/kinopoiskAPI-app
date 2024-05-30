@@ -89,9 +89,9 @@ const Pagination = ({ paginationProps }) => {
     const { onNextPageClick, onPrevPageClick, rightIsDisable, leftIsDisable, current, total } = paginationProps;
 
     return (
-        <div className="flex justify-center items-center gap-2 bg-zinc-100 py-2">
+        <div className="flex justify-center items-center gap-4 py-2">
             <button
-                className=""
+                className="bg-zinc-50 dark:bg-zinc-600 dark:hover:bg-zinc-500 transition-all hover:bg-zinc-200 hover:scale-105 rounded-md p-1 active:scale-95"
                 type="button"
                 onClick={onPrevPageClick}
                 disabled={leftIsDisable}
@@ -103,12 +103,12 @@ const Pagination = ({ paginationProps }) => {
                 />
             </button>
 
-            <span className="" >
+            <span className="font-medium text-zinc-400 dark:text-zinc-500">
                 {current} / {total}
             </span>
 
             <button
-                className=""
+                className="bg-zinc-50 dark:bg-zinc-600 dark:hover:bg-zinc-500 transition-all hover:bg-zinc-200 hover:scale-105 rounded-md p-1 active:scale-95"
                 type="button"
                 onClick={onNextPageClick}
                 disabled={rightIsDisable}

@@ -9,6 +9,7 @@ import ErrorPage from "./routes/ErrorPage";
 import ScrollToTop from './utils/ScrollToTop';
 import DraftsPage from './routes/DraftsPage/DraftsPage';
 
+import { API_KEY } from './data/data';
 import './index.css'
 
 const App = () => {
@@ -34,7 +35,7 @@ const App = () => {
 
   const options = {
     method: 'GET',
-    headers: { accept: 'application/json', 'X-API-KEY': 'Y42XJJR-M6Z4YDD-JQ61SZ7-N10PVN6' }
+    headers: { accept: 'application/json', 'X-API-KEY': API_KEY }
   };
 
   useEffect(() => {
@@ -98,10 +99,10 @@ const App = () => {
     setQuery(e.target.value);
   }
 
-  const searchURL = (isFirst) => {
+  const searchURL = () => {
     setRequests({
       ...requests,
-      page: isFirst ? 1 : requests.page,
+      page: 1,
       isSearch: '/search',
       fields: '',
       sortFields: '',
@@ -109,10 +110,10 @@ const App = () => {
     })
   }
 
-  const popularMoviesURL = (isFirst) => {
+  const popularMoviesURL = () => {
     setRequests({
       ...requests,
-      page: isFirst ? 1 : requests.page,
+      page: 1,
       filters: '&type=movie',
       fields: '&selectFields=id&selectFields=externalId&selectFields=name&selectFields=description&selectFields=type&selectFields=year&selectFields=rating&selectFields=ageRating&selectFields=votes&selectFields=genres&selectFields=movieLength&selectFields=isSeries&selectFields=totalSeriesLength&selectFields=countries&selectFields=poster&selectFields=videos&selectFields=persons&selectFields=top10&selectFields=top250&notNullFields=id&notNullFields=name&notNullFields=type&notNullFields=year&notNullFields=externalId.kpHD&notNullFields=rating.imdb&notNullFields=votes.imdb&notNullFields=ageRating&notNullFields=persons.name&notNullFields=genres.name&notNullFields=countries.name&notNullFields=poster.url',
       sortFields: '&sortField=votes.imdb&sortType=-1',
@@ -120,10 +121,10 @@ const App = () => {
     })
   }
 
-  const popularAnimationsURL = (isFirst) => {
+  const popularAnimationsURL = () => {
     setRequests({
       ...requests,
-      page: isFirst ? 1 : requests.page,
+      page: 1,
       filters: '&type=cartoon&type=animated-series&type=anime',
       sortFields: '&sortField=votes.imdb&sortType=-1',
       fields: '&selectFields=id&selectFields=externalId&selectFields=name&selectFields=description&selectFields=type&selectFields=year&selectFields=rating&selectFields=ageRating&selectFields=votes&selectFields=genres&selectFields=movieLength&selectFields=isSeries&selectFields=totalSeriesLength&selectFields=countries&selectFields=poster&selectFields=videos&selectFields=persons&selectFields=top10&selectFields=top250&notNullFields=id&notNullFields=name&notNullFields=type&notNullFields=year&notNullFields=externalId.kpHD&notNullFields=rating.imdb&notNullFields=votes.imdb&notNullFields=ageRating&notNullFields=persons.name&notNullFields=genres.name&notNullFields=countries.name&notNullFields=poster.url',
@@ -131,10 +132,10 @@ const App = () => {
     })
   }
 
-  const popularSeriesURL = (isFirst) => {
+  const popularSeriesURL = () => {
     setRequests({
       ...requests,
-      page: isFirst ? 1 : requests.page,
+      page: 1,
       filters: '&type=tv-series',
       sortFields: '&sortField=votes.imdb&sortType=-1',
       fields: '&selectFields=id&selectFields=externalId&selectFields=name&selectFields=description&selectFields=type&selectFields=year&selectFields=rating&selectFields=ageRating&selectFields=votes&selectFields=genres&selectFields=movieLength&selectFields=isSeries&selectFields=totalSeriesLength&selectFields=countries&selectFields=poster&selectFields=videos&selectFields=persons&selectFields=top10&selectFields=top250&notNullFields=id&notNullFields=name&notNullFields=type&notNullFields=year&notNullFields=externalId.kpHD&notNullFields=rating.imdb&notNullFields=votes.imdb&notNullFields=ageRating&notNullFields=persons.name&notNullFields=genres.name&notNullFields=countries.name&notNullFields=poster.url',
@@ -142,10 +143,10 @@ const App = () => {
     })
   }
 
-  const topMoviesURL = (isFirst) => {
+  const topMoviesURL = () => {
     setRequests({
       ...requests,
-      page: isFirst ? 1 : requests.page,
+      page: 1,
       filters: '&type=movie',
       fields: '&selectFields=id&selectFields=externalId&selectFields=name&selectFields=description&selectFields=type&selectFields=year&selectFields=rating&selectFields=ageRating&selectFields=votes&selectFields=genres&selectFields=movieLength&selectFields=isSeries&selectFields=totalSeriesLength&selectFields=countries&selectFields=poster&selectFields=videos&selectFields=persons&selectFields=top10&selectFields=top250&notNullFields=id&notNullFields=name&notNullFields=type&notNullFields=year&notNullFields=externalId.kpHD&notNullFields=rating.imdb&notNullFields=votes.imdb&notNullFields=ageRating&notNullFields=persons.name&notNullFields=genres.name&notNullFields=countries.name&notNullFields=poster.url&notNullFields=watchability.items.name&notNullFields=audience.count',
       sortFields: '&sortField=rating.imdb&sortField=votes.imdb&sortType=-1&sortType=-1',
@@ -153,10 +154,10 @@ const App = () => {
     })
   }
 
-  const topSeriesURL = (isFirst) => {
+  const topSeriesURL = () => {
     setRequests({
       ...requests,
-      page: isFirst ? 1 : requests.page,
+      page: 1,
       filters: '&type=tv-series',
       fields: '&selectFields=id&selectFields=externalId&selectFields=name&selectFields=description&selectFields=type&selectFields=year&selectFields=rating&selectFields=ageRating&selectFields=votes&selectFields=genres&selectFields=movieLength&selectFields=isSeries&selectFields=totalSeriesLength&selectFields=countries&selectFields=poster&selectFields=videos&selectFields=persons&selectFields=top10&selectFields=top250&notNullFields=id&notNullFields=name&notNullFields=type&notNullFields=year&notNullFields=externalId.kpHD&notNullFields=rating.imdb&notNullFields=votes.imdb&notNullFields=ageRating&notNullFields=persons.name&notNullFields=genres.name&notNullFields=countries.name&notNullFields=poster.url',
       sortFields: '&sortField=rating.imdb&sortField=votes.imdb&sortType=-1&sortType=-1',
@@ -164,10 +165,10 @@ const App = () => {
     })
   }
 
-  const topAnimationsURL = (isFirst) => {
+  const topAnimationsURL = () => {
     setRequests({
       ...requests,
-      page: isFirst ? 1 : requests.page,
+      page: 1,
       filters: '&type=cartoon&type=animated-series&type=anime',
       fields: '&selectFields=id&selectFields=externalId&selectFields=name&selectFields=description&selectFields=type&selectFields=year&selectFields=rating&selectFields=ageRating&selectFields=votes&selectFields=genres&selectFields=movieLength&selectFields=isSeries&selectFields=totalSeriesLength&selectFields=countries&selectFields=poster&selectFields=videos&selectFields=persons&selectFields=top10&selectFields=top250&notNullFields=id&notNullFields=name&notNullFields=type&notNullFields=year&notNullFields=externalId.kpHD&notNullFields=rating.imdb&notNullFields=votes.imdb&notNullFields=ageRating&notNullFields=persons.name&notNullFields=genres.name&notNullFields=countries.name&notNullFields=poster.url&notNullFields=watchability.items.name&notNullFields=audience.count',
       sortFields: '&sortField=rating.imdb&sortField=votes.imdb&sortType=-1&sortType=-1',
@@ -175,12 +176,12 @@ const App = () => {
     })
   }
 
-  const newMoviesURL = (isFirst) => {
+  const newMoviesURL = () => {
     let currentYear = new Date().getFullYear();
 
     setRequests({
       ...requests,
-      page: isFirst ? 1 : requests.page,
+      page: 1,
       filters: `&type=movie&year=${Number(currentYear) - 2}-${currentYear}`,
       fields: '&selectFields=id&selectFields=externalId&selectFields=name&selectFields=description&selectFields=type&selectFields=year&selectFields=rating&selectFields=ageRating&selectFields=votes&selectFields=genres&selectFields=movieLength&selectFields=isSeries&selectFields=totalSeriesLength&selectFields=countries&selectFields=poster&selectFields=videos&selectFields=persons&selectFields=top10&selectFields=top250&notNullFields=id&notNullFields=name&notNullFields=type&notNullFields=year&notNullFields=externalId.kpHD&notNullFields=rating.imdb&notNullFields=votes.imdb&notNullFields=ageRating&notNullFields=persons.name&notNullFields=genres.name&notNullFields=countries.name&notNullFields=poster.url&notNullFields=watchability.items.name&notNullFields=audience.count',
       sortFields: '&sortField=rating.imdb&sortField=votes.imdb&sortType=-1&sortType=-1',
@@ -188,12 +189,12 @@ const App = () => {
     })
   }
 
-  const newSeriesURL = (isFirst) => {
+  const newSeriesURL = () => {
     let currentYear = new Date().getFullYear();
 
     setRequests({
       ...requests,
-      page: isFirst ? 1 : requests.page,
+      page: 1,
       filters: `&type=tv-series&isSeries=true&year=${Number(currentYear) - 2}-${currentYear}`,
       fields: '&selectFields=id&selectFields=externalId&selectFields=name&selectFields=description&selectFields=type&selectFields=year&selectFields=rating&selectFields=ageRating&selectFields=votes&selectFields=genres&selectFields=movieLength&selectFields=isSeries&selectFields=totalSeriesLength&selectFields=countries&selectFields=poster&selectFields=videos&selectFields=persons&selectFields=top10&selectFields=top250&notNullFields=id&notNullFields=name&notNullFields=type&notNullFields=year&notNullFields=externalId.kpHD&notNullFields=rating.imdb&notNullFields=votes.imdb&notNullFields=ageRating&notNullFields=persons.name&notNullFields=genres.name&notNullFields=countries.name&notNullFields=poster.url',
       sortFields: '&sortField=rating.imdb&sortField=votes.imdb&sortType=-1&sortType=-1',
@@ -201,25 +202,18 @@ const App = () => {
     })
   }
 
-  const newAnimationsURL = (isFirst) => {
+  const newAnimationsURL = () => {
     let currentYear = new Date().getFullYear();
 
     setRequests({
       ...requests,
-      page: isFirst ? 1 : requests.page,
+      page: 1,
       filters: `&type=cartoon&type=animated-series&type=anime&year=${Number(currentYear) - 2}-${currentYear}`,
       fields: '&selectFields=id&selectFields=externalId&selectFields=name&selectFields=description&selectFields=type&selectFields=year&selectFields=rating&selectFields=ageRating&selectFields=votes&selectFields=genres&selectFields=movieLength&selectFields=isSeries&selectFields=totalSeriesLength&selectFields=countries&selectFields=poster&selectFields=videos&selectFields=persons&selectFields=top10&selectFields=top250&notNullFields=id&notNullFields=name&notNullFields=type&notNullFields=year&notNullFields=externalId.kpHD&notNullFields=rating.imdb&notNullFields=votes.imdb&notNullFields=ageRating&notNullFields=persons.name&notNullFields=genres.name&notNullFields=countries.name&notNullFields=poster.url&notNullFields=watchability.items.name&notNullFields=audience.count',
       sortFields: '&sortField=rating.imdb&sortField=votes.imdb&sortType=-1&sortType=-1',
       isSearch: '',
     })
   }
-
-  // const setFirstPage = () => {
-  //   setRequests({
-  //     ...requests,
-  //     page: 1,
-  //   })
-  // }
 
   const paginationProps = {
     onPrevPageClick,

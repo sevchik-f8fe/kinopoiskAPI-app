@@ -35,7 +35,7 @@ const Menu = ({ functionsURL }) => {
                         <ul className="ml-4">
                             <li
                                 onClick={() => {
-                                    functionsURL.popularMoviesURL(true)
+                                    functionsURL.popularMoviesURL()
                                     setMenuActive(!menuActive)
                                 }}
                                 className="mb-2 font-medium text-lg hover:text-orange-600 max-w-fit cursor-pointer transition-all"
@@ -48,7 +48,7 @@ const Menu = ({ functionsURL }) => {
                             <li
                                 className="mb-2 font-medium text-lg hover:text-orange-600 max-w-fit cursor-pointer transition-all"
                                 onClick={() => {
-                                    functionsURL.topMoviesURL(true)
+                                    functionsURL.topMoviesURL()
                                     setMenuActive(!menuActive)
                                 }}
                             >
@@ -60,7 +60,7 @@ const Menu = ({ functionsURL }) => {
                             <li
                                 className="mb-2 font-medium text-lg hover:text-orange-600 max-w-fit cursor-pointer transition-all"
                                 onClick={() => {
-                                    functionsURL.newMoviesURL(true)
+                                    functionsURL.newMoviesURL()
                                     setMenuActive(!menuActive)
                                 }}
                             >
@@ -76,7 +76,7 @@ const Menu = ({ functionsURL }) => {
                         <ul className="ml-4">
                             <li
                                 onClick={() => {
-                                    functionsURL.popularSeriesURL(true)
+                                    functionsURL.popularSeriesURL()
                                     setMenuActive(!menuActive)
                                 }}
                                 className="mb-2 font-medium text-lg hover:text-orange-600 max-w-fit cursor-pointer transition-all"
@@ -89,7 +89,7 @@ const Menu = ({ functionsURL }) => {
                             <li
                                 className="mb-2 font-medium text-lg hover:text-orange-600 max-w-fit cursor-pointer transition-all"
                                 onClick={() => {
-                                    functionsURL.topSeriesURL(true)
+                                    functionsURL.topSeriesURL()
                                     setMenuActive(!menuActive)
                                 }}
                             >
@@ -101,7 +101,7 @@ const Menu = ({ functionsURL }) => {
                             <li
                                 className="mb-2 font-medium text-lg hover:text-orange-600 max-w-fit cursor-pointer transition-all"
                                 onClick={() => {
-                                    functionsURL.newSeriesURL(true)
+                                    functionsURL.newSeriesURL()
                                     setMenuActive(!menuActive)
                                 }}
                             >
@@ -117,7 +117,7 @@ const Menu = ({ functionsURL }) => {
                         <ul className="ml-4">
                             <li
                                 onClick={() => {
-                                    functionsURL.popularAnimationsURL(true)
+                                    functionsURL.popularAnimationsURL()
                                     setMenuActive(!menuActive)
                                 }}
                                 className="mb-2 font-medium text-lg hover:text-orange-600 max-w-fit cursor-pointer transition-all"
@@ -130,7 +130,7 @@ const Menu = ({ functionsURL }) => {
                             <li
                                 className="mb-2 font-medium text-lg hover:text-orange-600 max-w-fit cursor-pointer transition-all"
                                 onClick={() => {
-                                    functionsURL.topAnimationsURL(true)
+                                    functionsURL.topAnimationsURL()
                                     setMenuActive(!menuActive)
                                 }}
                             >
@@ -142,7 +142,7 @@ const Menu = ({ functionsURL }) => {
                             <li
                                 className="mb-2 font-medium text-lg hover:text-orange-600 max-w-fit cursor-pointer transition-all"
                                 onClick={() => {
-                                    functionsURL.newAnimationsURL(true)
+                                    functionsURL.newAnimationsURL()
                                     setMenuActive(!menuActive)
                                 }}
                             >

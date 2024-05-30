@@ -8,6 +8,12 @@ const Header = ({ functionsURL }) => {
     const [theme, setTheme] = useState("light");
 
     useEffect(() => {
+        if (window.matchMedia('{prefers-color-scheme: dark}').matches) {
+            setTheme('dark');
+        } else setTheme('light');
+    }, [])
+
+    useEffect(() => {
         if (theme === "dark") {
             document.body.classList.add("dark");
         } else {
