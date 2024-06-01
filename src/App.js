@@ -17,6 +17,7 @@ const App = () => {
   const [data, setData] = useState({ docs: [], pages: 0 });
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [title, setTitle] = useState('');
 
   const [disabled, setDisabled] = useState({
     left: true,
@@ -100,6 +101,7 @@ const App = () => {
   }
 
   const searchURL = () => {
+    setTitle(`По запросу "${query}" найдено`)
     setRequests({
       ...requests,
       page: 1,
@@ -111,6 +113,7 @@ const App = () => {
   }
 
   const popularMoviesURL = () => {
+    setTitle('Самые популярные фильмы за всё время')
     setRequests({
       ...requests,
       page: 1,
@@ -122,6 +125,7 @@ const App = () => {
   }
 
   const popularAnimationsURL = () => {
+    setTitle('Мультфильмы, что просматривали несчётное количество раз')
     setRequests({
       ...requests,
       page: 1,
@@ -133,6 +137,7 @@ const App = () => {
   }
 
   const popularSeriesURL = () => {
+    setTitle('Эти сериалы должен знать каждый')
     setRequests({
       ...requests,
       page: 1,
@@ -144,6 +149,7 @@ const App = () => {
   }
 
   const topMoviesURL = () => {
+    setTitle('Эти фильмы не стыдно рекомендовать коллегам')
     setRequests({
       ...requests,
       page: 1,
@@ -155,6 +161,7 @@ const App = () => {
   }
 
   const topSeriesURL = () => {
+    setTitle('Сериалы, на которые можно потратить неделю и не пожалеть')
     setRequests({
       ...requests,
       page: 1,
@@ -166,6 +173,7 @@ const App = () => {
   }
 
   const topAnimationsURL = () => {
+    setTitle('Мультфильмы, котоырые не стыдно показать детям (и не только)')
     setRequests({
       ...requests,
       page: 1,
@@ -177,6 +185,7 @@ const App = () => {
   }
 
   const newMoviesURL = () => {
+    setTitle('В последнее время эти фильмы у всех на слуху')
     let currentYear = new Date().getFullYear();
 
     setRequests({
@@ -190,6 +199,7 @@ const App = () => {
   }
 
   const newSeriesURL = () => {
+    setTitle('Когда хочется чего-то нового')
     let currentYear = new Date().getFullYear();
 
     setRequests({
@@ -203,6 +213,7 @@ const App = () => {
   }
 
   const newAnimationsURL = () => {
+    setTitle('Иногда всем нам нужно побыть ребенком')
     let currentYear = new Date().getFullYear();
 
     setRequests({
@@ -245,7 +256,7 @@ const App = () => {
         <Header functionsURL={functionsURL} />
 
         <Routes>
-          <Route path='/' element={<HomePage data={data.docs || []} paginationProps={paginationProps} isLoading={isLoading} />} />
+          <Route path='/' element={<HomePage title={title} data={data.docs || []} paginationProps={paginationProps} isLoading={isLoading} />} />
           <Route path='/movies/:movieId' element={<MoviePage data={data.docs || []} />} />
           <Route path='/drafts' element={<DraftsPage />} />
           <Route path="*" element={<ErrorPage />} />

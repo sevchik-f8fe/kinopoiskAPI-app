@@ -5,7 +5,7 @@ import ListItem from "../components/ListItem";
 import prev from "./HomePage/angle-circle-left.svg";
 import next from "./HomePage/angle-circle-right.svg";
 
-const HomePage = ({ data, paginationProps, isLoading }) => {
+const HomePage = ({ data, paginationProps, isLoading, title }) => {
     const [showItem, setShowItem] = useState(null);
 
     const chooseItemClickHandler = (e) => {
@@ -18,14 +18,18 @@ const HomePage = ({ data, paginationProps, isLoading }) => {
         <>
             <div className="w-full dark:bg-zinc-800 py-4 flex justify-between gap-2">
                 {!isLoading ? (
-                    <ul className=" mt-6 mb-12 w-2/5">
-                        {data.map((item) => {
-                            return <ListItem data-index={item.id} isShow={item === showItem} key={item.id} item={item} chooseItemClickHandler={chooseItemClickHandler} />
-                        })}
-                        <li>
-                            <Pagination paginationProps={paginationProps} />
-                        </li>
-                    </ul>
+                    <div className="mt-6 mb-12 w-2/5">
+                        <h1 className="text-6xl font-bold dark:text-zinc-50 text-zinc-900 ml-6 mt-4">{title}</h1>
+                        <ul className="mt-6 mb-12">
+                            {data.map((item) => {
+                                return <ListItem data-index={item.id} isShow={item === showItem} key={item.id} item={item} chooseItemClickHandler={chooseItemClickHandler} />
+                            })}
+                            <li>
+                                <Pagination paginationProps={paginationProps} />
+                            </li>
+                        </ul>
+
+                    </div>
                 ) : (
                     <div className="w-2/5 mt-6 mb-12 flex min-h-64 flex-col items-center justify-center">
                         <svg className="animate-spin mt- h-12 w-12 border-b-2 rounded-full border-zinc-400" viewBox="0 0 24 24" />
