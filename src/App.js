@@ -101,7 +101,7 @@ const App = () => {
   }
 
   const searchURL = () => {
-    setTitle(`По запросу "${query}" найдено`)
+    setTitle(`По запросу "${query}" найдено:`)
     setRequests({
       ...requests,
       page: 1,
